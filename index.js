@@ -60,4 +60,4 @@ if (module === require.main) {
   run();
 }
 
-module.exports = { readPath, makeRepo, getContents };
+module.exports = { run };
