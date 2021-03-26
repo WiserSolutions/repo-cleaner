@@ -40,9 +40,10 @@ async function run(callback) {
         console.log('[DELETE]', b.name);
 
         if(!dry) {
-          await octokit.git.deleteRef({
+          console.log('actually delete');
+          /*await octokit.git.deleteRef({
             ref: 'refs/heads/' + b.name
-          });
+          });*/
         }
 
         deletedBranches.push(b.name);
