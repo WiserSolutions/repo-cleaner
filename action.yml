@@ -1,0 +1,21 @@
+name: 'Repo Cleaner'
+description: 'Cleans unnecessary branches from a GitHub rules with a few simple rules'
+inputs:
+  token:
+    description: 'Authentication for GitHub HTTP'
+    required: true
+  exclude-list:
+    description: 'List of branches which should not be cleaned'
+    default: 'dev,develop,main,master'
+    required: false
+  orphan-time:
+    description: 'How old the latest commit of a branch must be in milliseconds before it is considered orphan'
+    default: 604800000
+    required: false
+  dry:
+    description: 'Set to `false` to actually delete branches'
+    default: true
+    required: false
+runs:
+  using: 'node12'
+  main: 'index.js'
