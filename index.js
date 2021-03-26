@@ -17,9 +17,12 @@ async function run(callback) {
 
     const octokit = github.getOctokit(token);
 
-    const allBranches = _.sortBy(await octokit.repos.listBranches(), 'name');
+    const allBranches = _.sortBy(await octokit.repos.listBranches({
+      ...github.context.repo
+    }), 'name');
 
     const allOpenPRBranches = _.map(octokit.pulls.list({
+      ...github.context.repo,
       state: 'open'
     }), 'base.ref');
 
@@ -36,7 +39,10 @@ async function run(callback) {
 
     const deletedBranches = [];
     for(const b of allOrphanBranches) {
-      const commitInfo = await octokit.repos.getCommit({ ref: b.name });
+      const commitInfo = await octokit.repos.getCommit({ 
+        ...github.context.repo,
+        ref: b.name }
+      );
 
       if( new Date(commitInfo.commit.author.date).getTime() < oldestAcceptedTime) {
         console.log('[DELETE]', b.name);
@@ -44,6 +50,7 @@ async function run(callback) {
         if(!dry) {
           console.log('actually delete');
           /*await octokit.git.deleteRef({
+            ...github.context.repo,
             ref: 'refs/heads/' + b.name
           });*/
         }
