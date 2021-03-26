@@ -1,0 +1,25 @@
+{
+  "name": "repo-cleaner",
+  "version": "1.0.0",
+  "description": "Cleans orphan branches from specified repos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WiserSolutions/repo-cleaner.git"
+  },
+  "author": "Daniel Beal <dbeal@wiser.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WiserSolutions/repo-cleaner/issues"
+  },
+  "homepage": "https://github.com/WiserSolutions/repo-cleaner#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0",
+    "@octokit/rest": "^18.4.0",
+    "lodash": "^4.17.21"
+  }
+}
