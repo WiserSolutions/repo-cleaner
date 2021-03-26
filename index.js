@@ -1,5 +1,5 @@
 const core = require('@actions/core');
-const github = require("@octokit/github");
+const github = require("@actions/github");
 
 const _ = require('lodash');
 
