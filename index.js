@@ -65,7 +65,7 @@ async function run(callback) {
         if(executeDelete) {
           await octokit.git.deleteRef({
             ...github.context.repo,
-            ref: 'refs/heads/' + b.name
+            ref: b.name
           });
         }
 
