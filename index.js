@@ -17,7 +17,7 @@ async function run(callback) {
 
     const octokit = github.getOctokit(token);
     
-    console.log('DRY MODE?', executeDelete);
+    console.log('DRY MODE?', !executeDelete, core.getInput('dry'));
 
     console.log('configured excluding branches:', excludeList);
 
