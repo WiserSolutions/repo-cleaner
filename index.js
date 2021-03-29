@@ -11,7 +11,7 @@ async function run(callback) {
     excludeList.sort();
     const orphanTime = core.getInput('orphan-time');
 
-    const executeDelete = core.getInput('dry') == false;
+    const executeDelete = core.getInput('dry') == 'false';
 
     const token = core.getInput('token');
 
