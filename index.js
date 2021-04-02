@@ -16,10 +16,9 @@ async function run(callback) {
     const token = core.getInput('token');
 
     const octokit = github.getOctokit(token);
-    
-    console.log('DRY MODE?', !executeDelete, core.getInput('dry'));
 
-    console.log('configured excluding branches:', excludeList);
+    for(const b of excludeList)
+      console.log('[KEEP]', b);
 
     const allBranches = _.sortBy((await octokit.repos.listBranches({
       ...github.context.repo,
@@ -39,7 +38,8 @@ async function run(callback) {
 
     allOpenPRBranches.sort();
 
-    console.log('all open PR branches:', allOpenPRBranches);
+    for(const prb of allOpenPRBranches)
+      console.log('[KEEP]', prb);
 
     // conditions on which a branch ref is deleted:
     const allOrphanBranches = _.chain(allBranches)
